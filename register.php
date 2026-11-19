@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($password) < 8) {
         $error = 'Password minimal 8 karakter.';
     } elseif ($password !== $konfirmasi) {
-        $error = 'Konfirmasi password nggak cocok.';
+        $error = 'Konfirmasi password tidak cocok.';
     } else {
         $cek = mysqli_prepare($koneksi, "SELECT id FROM users WHERE username = ?");
         mysqli_stmt_bind_param($cek, "s", $username);
@@ -40,17 +40,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Daftar</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h2>Buat Akun</h2>
-    <?php if ($error): ?>
-        <p style="color:red;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password (min. 8 karakter)" required>
-        <input type="password" name="konfirmasi" placeholder="Ulangi password" required>
-        <button type="submit">Daftar</button>
+<body class="login-page">
+    <form method="POST" class="login-box">
+        <h2>Buat Akun</h2>
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+        <label>Username</label>
+        <input type="text" name="username" required>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Minimal 8 karakter" required>
+        <label>Ulangi Password</label>
+        <input type="password" name="konfirmasi" required>
+        <input type="submit" value="Daftar" class="btn" style="width:100%">
+        <p>Sudah punya akun? <a href="login.php">Login</a></p>
     </form>
-    <p>Udah punya akun? <a href="login.php">Login</a></p>
 </body>
 </html>

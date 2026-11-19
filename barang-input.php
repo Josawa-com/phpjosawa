@@ -10,21 +10,24 @@
     <?php include 'sidebar.php'; ?>
     <div class="content">
         <h2>Input Data Barang</h2>
-        <form action="barang-input-aksi.php" method="POST">
-            <label>Id Barang</label>
-            <input type="text" name="id_barang">
+        <p class="page-sub">Tambahkan barang baru beserta harga dan stoknya.</p>
+        <div class="card">
+            <form action="barang-input-aksi.php" method="POST">
+                <label>Id Barang</label>
+                <input type="text" name="id_barang" placeholder="Contoh: B004" required>
 
-            <label>Nama Barang</label>
-            <input type="text" name="nama_barang">
+                <label>Nama Barang</label>
+                <input type="text" name="nama_barang" placeholder="Contoh: Buku Gambar" required>
 
-            <label>Harga</label>
-            <input type="text" name="harga">
+                <label>Harga</label>
+                <input type="number" name="harga" min="0" placeholder="Contoh: 5000" required>
 
-            <label>Stock</label>
-            <input type="text" name="stock">
+                <label>Stok</label>
+                <input type="number" name="stock" min="0" placeholder="Contoh: 50" required>
 
-            <input type="submit" value="Simpan">
-        </form>
+                <input type="submit" value="Simpan" class="btn">
+            </form>
+        </div>
     </div>
 </body>
 </html>
